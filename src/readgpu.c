@@ -21,9 +21,10 @@ if((fp = fopen(GPU_MAX_FREP,"r")) == NULL)
     exit(EXIT_FAILURE);
 }
 
-fread(&buff,sizeof(buff),1,fp);
+fread(&buff,sizeof(buff),30,fp);
 
-frep = (unsigned long)buff;
+// frep = (unsigned long)buff;
+frep = strtoul(buff,NULL,30);
 printf("%lu\n",frep);
 
 // while ((ch = getc(fp)) != EOF)
