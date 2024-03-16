@@ -11,7 +11,7 @@ int main()
 {
  FILE *fp;
 unsigned long frep;
-char buff[20]= {0};
+char buff[9]= {0};
 int ch = 0;
 
 
@@ -21,10 +21,10 @@ if((fp = fopen(GPU_MAX_FREP,"r")) == NULL)
     exit(EXIT_FAILURE);
 }
 
-fread(&buff,sizeof(buff),20,fp);
+fread(&buff,sizeof(buff),9,fp);
 
 // frep = (unsigned long)buff;
-frep = strtoul(buff,NULL,20);
+frep = strtoul(buff,NULL,9);
 printf("%lu\n",frep);
 
 // while ((ch = getc(fp)) != EOF)
