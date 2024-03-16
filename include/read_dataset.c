@@ -78,6 +78,8 @@ void read_pixel(FILE *fp,unsigned int f[60000][28][28])
     {
         printf("Read succes\n");
     }
+
+    fclose(fp);
 }
 
 void print_ipxel(unsigned int f[60000][28][28])
