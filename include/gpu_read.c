@@ -10,7 +10,7 @@ if ((fp = fopen(path,"r")) == NULL)
     printf("Open %s failure\n",path);
     exit(EXIT_FAILURE);
 }   
-if ((fread(&a,sizeof(a),8,fp)) < 8)
+if ((fread(&a,sizeof(a),8,fp)) > 8 )
 {
     printf("Read %s failure\n",path);
     exit(EXIT_FAILURE);
