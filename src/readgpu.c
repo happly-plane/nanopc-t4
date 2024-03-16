@@ -13,6 +13,11 @@ FILE *fp;
 unsigned long max_frep,min_frep, load;
 // char a[8];
 
+max_frep = read_gpu_frep_load(fp,GPU_MAX_FREP);
+min_frep = read_gpu_frep_load(fp,GPU_MIN_FREP);
+
+printf("%lu\n",max_frep);
+printf("%lu\n",min_frep);
 
 // if((fp = fopen(GPU_MAX_FREP,"r")) == NULL)
 // {
