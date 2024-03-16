@@ -9,6 +9,12 @@ add_executable(read_gpu src/readgpu.c include/gpu_read.c)
 # target_sources(read_gpu PRIVATE include/gpu_read.h)
 
 
+
+
+add_executable(device-opencl src/opencl.c)
+target_link_libraries(device-opencl OpenCL)
+
+
 # 编译静态库
 # add_library(gpu-read
 #     STATIC
