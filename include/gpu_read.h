@@ -1,5 +1,5 @@
-#ifndef GPU_READ_H
-#define GPU_READ_H
+#ifndef _GPU_READ_H
+#define _GPU_READ_H
 
 #include<stdio.h>
 #include<stdlib.h>
