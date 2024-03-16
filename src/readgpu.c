@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<unistd.h>
-#include"gpu_read.h"
+#include "gpu_read.h"
 
 #define  GPU_MAX_FREP "/sys/devices/platform/ff9a0000.gpu/devfreq/ff9a0000.gpu/max_freq"  // 800000000
 #define  GPU_MIN_FREP "/sys/devices/platform/ff9a0000.gpu/devfreq/ff9a0000.gpu/min_freq"   // 200000000
