@@ -17,7 +17,7 @@ if ((fread(&a,sizeof(a),8,fp)) > 8 )
 }
 
 frep = atol(a);
-
+fclose(fp);
 return frep;
 
 }

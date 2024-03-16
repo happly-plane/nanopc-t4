@@ -19,8 +19,8 @@ min_frep = read_gpu_frep_load(cp,GPU_MIN_FREP);
 printf("%lu\n",max_frep);
 printf("%lu\n",min_frep);
 
-fclose(fp);
-fclose(cp);
+// fclose(fp);
+// fclose(cp);
 return 0;
 
 }
