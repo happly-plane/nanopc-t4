@@ -5,14 +5,17 @@ include_directories(include)
 
 set(CMAKE_BUILD_TYPE Debug)
 
-add_executable(read_gpu src/readgpu.c include/gpu_read.c)
+# add_executable(read_gpu src/readgpu.c include/gpu_read.c)
 # target_sources(read_gpu PRIVATE include/gpu_read.h)
+
+add_executable(read_dataset src/test.c include/read_dataset.c)
 
 
 
 add_definitions(-DCL_TARGET_OPENCL_VERSION=120)
 add_executable(device-opencl src/opencl.c)
 target_link_libraries(device-opencl OpenCL)
+
 
 
 # 编译静态库
