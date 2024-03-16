@@ -19,22 +19,6 @@ min_frep = read_gpu_frep_load(cp,GPU_MIN_FREP);
 printf("%lu\n",max_frep);
 printf("%lu\n",min_frep);
 
-// if((fp = fopen(GPU_MAX_FREP,"r")) == NULL)
-// {
-//     printf("failure to open file\n");
-//     exit(EXIT_FAILURE);
-// }
-
-// fread(&a,sizeof(a),8,fp);
-
-// // frep = (unsigned long)buff;
-// frep = atol(a);
-// printf("%lu\n",frep);
-
-// // while ((ch = getc(fp)) != EOF)
-// // {
-// //     putchar(fp);
-// // }
 fclose(fp);
 fclose(cp);
 return 0;
