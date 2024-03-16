@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include "gpu_read.h"
 unsigned long read_gpu_frep_load(FILE *fp,const char *path)
 {
 unsigned long frep = 0;
