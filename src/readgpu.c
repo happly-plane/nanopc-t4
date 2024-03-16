@@ -11,7 +11,7 @@ int main()
 {
  FILE *fp;
 unsigned long frep;
-char buff[30];
+char buff[30]= {0};
 int ch = 0;
 
 
