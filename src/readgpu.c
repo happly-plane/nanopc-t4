@@ -9,15 +9,17 @@
 
 int main()
 {
-FILE *fp, *cp;
+FILE *fp, *cp, *lp;
 unsigned long max_frep,min_frep, load;
 // char a[8];
 
 max_frep = read_gpu_frep_load(fp,GPU_MAX_FREP);
 min_frep = read_gpu_frep_load(cp,GPU_MIN_FREP);
+load = read_gpu_frep_load(lp,GPU_LOAD);
 
 printf("%lu\n",max_frep);
 printf("%lu\n",min_frep);
+printf("%lu\n",load);
 
 // fclose(fp);
 // fclose(cp);
