@@ -21,11 +21,11 @@ if((fp = fopen(GPU_MAX_FREP,"r")) == NULL)
     exit(EXIT_FAILURE);
 }
 
-if((fread(&buff,sizeof(buff),1,fp)) > 0)
-{
-    frep = (unsigned long)buff;
-    printf("%lu\n",frep);
-}
+fread(&buff,sizeof(buff),1,fp);
+
+frep = (unsigned long)buff;
+printf("%lu\n",frep);
+
 // while ((ch = getc(fp)) != EOF)
 // {
 //     putchar(fp);
