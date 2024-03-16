@@ -10,7 +10,7 @@ add_executable(read_gpu src/readgpu.c include/gpu_read.c)
 
 
 
-
+add_definitions(-DCL_TARGET_OPENCL_VERSION=120)
 add_executable(device-opencl src/opencl.c)
 target_link_libraries(device-opencl OpenCL)
 
