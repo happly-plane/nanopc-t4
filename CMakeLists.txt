@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
 project(nanopc-t4 LANGUAGES C)
 add_executable(read_gpu src/readgpu.c)
-
+include_directories(include)
 
 
 # 编译静态库
