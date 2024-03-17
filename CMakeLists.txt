@@ -21,7 +21,7 @@ target_link_libraries(device-opencl OpenCL)
 
 add_executable(oled_show src/show.c include/oled.c)
 target_compile_options(oled_show PRIVATE -Wall)
-target_link_libraries(oled_show OpenCL WiringPiDev wiringPi pthread rt m crypt)
+target_link_libraries(oled_show OpenCL wiringPiDev wiringPi pthread rt m crypt)
 
 
 # 编译静态库
