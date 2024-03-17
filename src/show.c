@@ -8,8 +8,8 @@
 int main(void)
 {
 wiringPiSetupPhys();
-pinMode(SDA,OUT_PUT);
-pinMode(SCL,OUT_PUT);
+pinMode(SDA,OUTPUT);
+pinMode(SCL,OUTPUT);
 OLED_Init();
 while (1)
 {
