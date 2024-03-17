@@ -8,7 +8,7 @@ set(CMAKE_BUILD_TYPE Debug)
 # add_executable(read_gpu src/readgpu.c include/gpu_read.c)
 # target_sources(read_gpu PRIVATE include/gpu_read.h)
 
-add_executable(read_dataset src/test.c include/read_dataset.c)
+# add_executable(read_dataset src/test.c include/read_dataset.c)
 
 
 
