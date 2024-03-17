@@ -1,5 +1,7 @@
 #include<wiringPi.h>
 #include "OLED_Font.h"
+#define SDA  3
+#define SCL  5
 
 #define SDA_LOW  digitslWrite(SCL,LOW);
 #define SDA_HIGH digitslWrite(SCL,HIGH);
