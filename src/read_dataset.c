@@ -1,22 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../include/type.h"
+#include "read_dataset.h"
+#include "type.h"
 
-#define PATH "../dateset/train-images-idx3-ubyte"
-unsigned int littleEndianToBigEndian(unsigned int num);
-void mnist_info(FILE *fp, const char *path);
-void read_pixel(const char *path,FILE *fp, unsigned int f[60000][28][28]);
-void print_ipxel(unsigned int f[60000][28][28]);
-
-int main()
-{
-    FILE *fp;
-    uint4 pixel[60000][28][28];
-   // mnist_info(fp, PATH);
-    read_pixel(PATH,fp, pixel);
-    print_ipxel(pixel);
-    return 0;
-}
 
 unsigned int littleEndianToBigEndian(unsigned int num)
 {
@@ -26,7 +12,7 @@ unsigned int littleEndianToBigEndian(unsigned int num)
            ((num << 24) & 0xFF000000); // 将第四个字节移到第一个位置
 }
 
-void mnist_info(FILE *fp, const char *path)
+void mnist_info(FILE *fp,const char * path)
 {
     unsigned int a = 0, b = 0, c = 0, d = 0;
     if ((fp = fopen(path, "rb")) == NULL)
@@ -56,26 +42,20 @@ void mnist_info(FILE *fp, const char *path)
     // fclose(fp);
 }
 
-void read_pixel(const char *path, FILE *fp, unsigned int f[60000][28][28])
+void read_pixel(FILE *fp,unsigned int f[60000][28][28])
 {
-if ((fp = fopen(path, "rb")) == NULL)
-    {
-        printf("open %s failure", path);
-        exit(EXIT_FAILURE);
-    }  
-    
-      // unsigned int f[60000][28][28];
+    // unsigned int f[60000][28][28];
     byte e;
-    long offset = 16;
+    long  offset = 16;
 
-    for (long number = 0; number < 60000; number++) // 图片数量
+    for (long number = 0; number < 60000; number++)   //图片数量
     {
-        for (long pixel_columns = 0; pixel_columns < 28; pixel_columns++) // 像素列
+        for (long pixel_columns = 0; pixel_columns < 28; pixel_columns++) //像素列
         {
-            for (long pixel_rows = 0; pixel_rows < 28; pixel_rows++) // 像素行
+            for (long pixel_rows = 0; pixel_rows < 28; pixel_rows++) //像素行
             {
-                fseek(fp, offset, SEEK_SET);
-                fread(&e, sizeof(e), 1, fp); // 像素总字节 = 47,039,984
+                fseek(fp,offset,SEEK_SET);
+                fread(&e,sizeof(e),1,fp);  // 像素总字节 = 47,039,984
                 f[number][pixel_columns][pixel_rows] = (unsigned int)e;
                 offset++;
 
@@ -83,13 +63,16 @@ if ((fp = fopen(path, "rb")) == NULL)
                 {
                     pixel_rows = 0;
                 }
+
             }
 
-            if (pixel_columns == 28)
-            {
-                pixel_columns = 0;
-            }
+                if (pixel_columns == 28)
+                {
+                    pixel_columns = 0;
+                }
+                
         }
+           
     }
     if (offset == 47039984)
     {
@@ -102,25 +85,32 @@ if ((fp = fopen(path, "rb")) == NULL)
 void print_ipxel(unsigned int f[60000][28][28])
 {
 
-    for (long number = 0; number < 60000; number++) // 图片数量
+    for (long number = 0; number < 60000; number++)   //图片数量
     {
-        for (long pixel_columns = 0; pixel_columns < 28; pixel_columns++) // 像素列
+        for (long pixel_columns = 0; pixel_columns < 28; pixel_columns++) //像素列
         {
-            for (long pixel_rows = 0; pixel_rows < 28; pixel_rows++) // 像素行
+            for (long pixel_rows = 0; pixel_rows < 28; pixel_rows++) //像素行
             {
 
-                printf("%d\n", f[number][pixel_columns][pixel_rows]);
+                 printf("%d\n",f[number][pixel_columns][pixel_rows]);
 
                 if (pixel_rows == 28)
                 {
                     pixel_rows = 0;
                 }
+
             }
 
-            if (pixel_columns == 28)
-            {
-                pixel_columns = 0;
-            }
+                if (pixel_columns == 28)
+                {
+                    pixel_columns = 0;
+                }
+                
         }
+           
     }
+
+
+
 }
+
