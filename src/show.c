@@ -2,7 +2,8 @@
 #include<stdint.h>
 #include<stdio.h>
 #include<wiringPi.h>
-
+#define SDA  3
+#define SCL  5
 
 
 int main(void)
