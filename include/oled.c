@@ -8,6 +8,15 @@
 #define SCL_LOW  digitalWrite(SDA,LOW);
 #define SCL_HIGH digitalWrite(SDA,HIGH);
 
+
+void OLED_I2C_Init(void)
+{
+	SCL_HIGH
+	SDA_HIGH
+}
+
+
+
 /**
  * @brief I2c 开始
  * @param 无
@@ -111,7 +120,7 @@ OLED_stop();
   * @param  无
   * @retval 无
   */
- void OLED_clear(void)
+ void OLED_Clear(void)
  {
     uint8_t i,j;
     for ( i = 0; i < 8; i++)
