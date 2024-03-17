@@ -3,10 +3,10 @@
 #define SDA  3
 #define SCL  5
 
-#define SDA_LOW  digitslWrite(SCL,LOW);
-#define SDA_HIGH digitslWrite(SCL,HIGH);
-#define SCL_LOW  digitslWrite(SDA,LOW);
-#define SCL_HIGH digitslWrite(SDA,HIGH);
+#define SDA_LOW  digitalWrite(SCL,LOW);
+#define SDA_HIGH digitalWrite(SCL,HIGH);
+#define SCL_LOW  digitalWrite(SDA,LOW);
+#define SCL_HIGH digitalWrite(SDA,HIGH);
 
 /**
  * @brief I2c 开始
