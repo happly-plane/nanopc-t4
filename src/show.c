@@ -11,6 +11,8 @@ int main(void)
 wiringPiSetupPhys();
 pinMode(SDA,OUTPUT);
 pinMode(SCL,OUTPUT);
+pullUpDnControl(SDA,PUD_UP);
+pullUpDnControl(SCL,PUD_UP);
 OLED_Init();
 while (1)
 {
