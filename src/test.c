@@ -5,13 +5,13 @@
 #define PATH "../dateset/train-images-idx3-ubyte"
 unsigned int littleEndianToBigEndian(unsigned int num);
 void mnist_info(FILE *fp, const char *path);
-void read_pixel(const char *path,FILE *fp, unsigned int f[60000][28][28]);
-void print_ipxel(unsigned int f[60000][28][28]);
+void read_pixel(const char *path,FILE *fp,  byte f[60000][28][28]);
+void print_ipxel(byte f[60000][28][28]);
 
 int main()
 {
     FILE *fp;
-    uint4 pixel[60000][28][28];
+    byte pixel[60000][28][28];
    // mnist_info(fp, PATH);
     read_pixel(PATH,fp, pixel);
     print_ipxel(pixel);
@@ -56,7 +56,7 @@ void mnist_info(FILE *fp, const char *path)
     // fclose(fp);
 }
 
-void read_pixel(const char *path, FILE *fp, unsigned int f[60000][28][28])
+void read_pixel(const char *path, FILE *fp, byte f[60000][28][28])
 {
 if ((fp = fopen(path, "rb")) == NULL)
     {
@@ -99,7 +99,7 @@ if ((fp = fopen(path, "rb")) == NULL)
     fclose(fp);
 }
 
-void print_ipxel(unsigned int f[60000][28][28])
+void print_ipxel(byte f[60000][28][28])
 {
 
     for (long number = 0; number < 60000; number++) // 图片数量
