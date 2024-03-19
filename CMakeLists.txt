@@ -12,9 +12,9 @@ add_executable(read_cpu src/readgpu.c include/oled_app.c)
 
 
 
-add_definitions(-DCL_TARGET_OPENCL_VERSION=120)
-add_executable(device-opencl src/opencl.c)
-target_link_libraries(device-opencl OpenCL)
+# add_definitions(-DCL_TARGET_OPENCL_VERSION=120)
+# add_executable(device-opencl src/opencl.c)
+# target_link_libraries(device-opencl OpenCL)
 
 
 
