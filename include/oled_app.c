@@ -85,7 +85,7 @@ static uint8 oled_i2c_write(int fd, uint8 reg, uint8 val)
 
 void OLED_Init(void)
 {
-    fd = open("/dev/i2c-0", O_RDWR); // open file and enable read and  write
+    fd = open("/dev/i2c-2", O_RDWR); // open file and enable read and  write
 
     if (fd < 0)
     {
