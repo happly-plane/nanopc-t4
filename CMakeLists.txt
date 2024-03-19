@@ -5,8 +5,8 @@ include_directories(/usr/src/linux-headers-6.1.0-16-common/include/)
 
 set(CMAKE_BUILD_TYPE Debug)
 
-# add_executable(read_gpu src/readgpu.c include/gpu_read.c)
-# target_sources(read_gpu PRIVATE include/gpu_read.h)
+add_executable(read_cpu src/readgpu.c include/oled_app.c)
+# target_sources(read_gpu PRIVATE include/oled_app.h)
 
 # add_executable(read_dataset src/test.c include/read_dataset.c)
 

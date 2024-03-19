@@ -16,10 +16,9 @@
 int fd = -1;
 
 /*程序中使用到的点阵 字库*/
-extern const unsigned char F16x16[];
 extern const unsigned char F6x8[][6];
 extern const unsigned char F8X16[];
-extern const unsigned char BMP1[];
+
 
 
 /* IIC 写函数
@@ -274,49 +273,49 @@ void OLED_ShowStr(unsigned char x, unsigned char y, unsigned char ch[], unsigned
 	*					N:汉字在codetab.h中的索引
 	* @retval 无
   */
-void OLED_ShowCN(unsigned char x, unsigned char y, unsigned char N)
-{
-	unsigned char wm=0;
-	unsigned int  adder=32*N;
-	oled_set_Pos(x , y);
-	for(wm = 0;wm < 16;wm++)
-	{
-		oled_i2c_write(fd, OLED_DATA_ADDR,F16x16[adder]);
-		adder += 1;
-	}
-	oled_set_Pos(x,y + 1);
-	for(wm = 0;wm < 16;wm++)
-	{
-	  oled_i2c_write(fd, OLED_DATA_ADDR,F16x16[adder]);
-		adder += 1;
-	}
-}
+// void OLED_ShowCN(unsigned char x, unsigned char y, unsigned char N)
+// {
+// 	unsigned char wm=0;
+// 	unsigned int  adder=32*N;
+// 	oled_set_Pos(x , y);
+// 	for(wm = 0;wm < 16;wm++)
+// 	{
+// 		oled_i2c_write(fd, OLED_DATA_ADDR,F16x16[adder]);
+// 		adder += 1;
+// 	}
+// 	oled_set_Pos(x,y + 1);
+// 	for(wm = 0;wm < 16;wm++)
+// 	{
+// 	  oled_i2c_write(fd, OLED_DATA_ADDR,F16x16[adder]);
+// 		adder += 1;
+// 	}
+// }
 
 
 
 
- /**
-  * @brief  OLED_DrawBMP，显示BMP位图
-  * @param  x0,y0 :起始点坐标(x0:0~127, y0:0~7);
-	*					x1,y1 : 起点对角线(结束点)的坐标(x1:1~128,y1:1~8)
-	* @retval 无
-  */
-void OLED_DrawBMP(unsigned char x0,unsigned char y0,unsigned char x1,unsigned char y1,unsigned char BMP[])
-{
-	unsigned int j=0;
-	unsigned char x,y;
+//  /**
+//   * @brief  OLED_DrawBMP，显示BMP位图
+//   * @param  x0,y0 :起始点坐标(x0:0~127, y0:0~7);
+// 	*					x1,y1 : 起点对角线(结束点)的坐标(x1:1~128,y1:1~8)
+// 	* @retval 无
+//   */
+// void OLED_DrawBMP(unsigned char x0,unsigned char y0,unsigned char x1,unsigned char y1,unsigned char BMP[])
+// {
+// 	unsigned int j=0;
+// 	unsigned char x,y;
 
-  if(y1%8==0)
-		y = y1/8;
-  else
-		y = y1/8 + 1;
-	for(y=y0;y<y1;y++)
-	{
-		oled_set_Pos(x0,y);
-    for(x=x0;x<x1;x++)
-		{
-			oled_i2c_write(fd, OLED_DATA_ADDR,BMP[j++]);
-		}
-	}
-}
+//   if(y1%8==0)
+// 		y = y1/8;
+//   else
+// 		y = y1/8 + 1;
+// 	for(y=y0;y<y1;y++)
+// 	{
+// 		oled_set_Pos(x0,y);
+//     for(x=x0;x<x1;x++)
+// 		{
+// 			oled_i2c_write(fd, OLED_DATA_ADDR,BMP[j++]);
+// 		}
+// 	}
+// }
 
