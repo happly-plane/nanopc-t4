@@ -23,11 +23,11 @@ void OLED_Init(void);
 void OLED_Fill(unsigned char fill_Data); //全屏填充
 void OLED_CLS(void);//清屏
 void oled_set_Pos(unsigned char x, unsigned char y); //设置起始点坐标
-unsigned int  OLED_Pow(unsigned int X, unsigned int Y);
-void OLED_ShowNum(uint8 Line, uint8 Column, unsigned int Number, uint8 Length);
-void OLED_ShowChar(uint8 Line, uint8 Column, char Char);
+// unsigned int  OLED_Pow(unsigned int X, unsigned int Y);
+// void OLED_ShowNum(uint8 Line, uint8 Column, unsigned int Number, uint8 Length);
+// void OLED_ShowChar(uint8 Line, uint8 Column, char Char);
 
-
+void OLED_ShowStr(unsigned char x, unsigned char y, unsigned char ch[] );
 
 // void OLED_ShowCN(unsigned char x, unsigned char y, unsigned char N);
 // void OLED_DrawBMP(unsigned char x0,unsigned char y0,unsigned char x1,unsigned char y1,unsigned char BMP[]);
