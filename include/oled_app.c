@@ -6,18 +6,14 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-
-
-
 #include "oled_app.h"
-
+#include "font.h"
 
 
 int fd = -1;
-
+extern const uint8 OLED_F8x16[][16];
 /*程序中使用到的点阵 字库*/
-extern const unsigned char F6x8[][6];
-extern const unsigned char F8X16[];
+
 
 
 
@@ -220,59 +216,98 @@ void OLED_OFF(void)
 	*					TextSize : 字符大小(1:6*8 ; 2:8*16)
 	* @retval 无
   */
-void OLED_ShowStr(unsigned char x, unsigned char y, unsigned char ch[], unsigned char TextSize)
+// void OLED_ShowStr(unsigned char x, unsigned char y, unsigned char ch[], unsigned char TextSize)
+// {
+// 	unsigned char c = 0,i = 0,j = 0;
+// 	switch(TextSize)
+// 	{
+// 		case 1:
+// 		{
+// 			while(ch[j] != '\0')
+// 			{
+// 				c = ch[j] - 32;
+// 				if(x > 126)
+// 				{
+// 					x = 0;
+// 					y++;
+// 				}
+// 				oled_set_Pos(x,y);
+// 				for(i=0;i<6;i++)
+// 					oled_i2c_write(fd, OLED_DATA_ADDR,F6x8[c][i]);
+// 				x += 6;
+// 				j++;
+// 			}
+// 		}break;
+// 		case 2:
+// 		{
+// 			while(ch[j] != '\0')
+// 			{
+// 				c = ch[j] - 32;
+// 				if(x > 120)
+// 				{
+// 					x = 0;
+// 					y++;
+// 				}  
+// 				oled_set_Pos(x,y);
+// 				for(i=0;i<8;i++)
+// 					oled_i2c_write(fd, OLED_DATA_ADDR,F8X16[c*16+i]);
+// 				oled_set_Pos(x,y+1);
+// 				for(i=0;i<8;i++)
+// 					oled_i2c_write(fd, OLED_DATA_ADDR,F8X16[c*16+i+8]);
+// 				x += 8;
+// 				j++;
+// 			}
+// 		}break;
+// 	}
+// }
+unsigned int  OLED_Pow(unsigned int X, unsigned int Y)
 {
-	unsigned char c = 0,i = 0,j = 0;
-	switch(TextSize)
+	unsigned int Result = 1;
+	while (Y--)
 	{
-		case 1:
-		{
-			while(ch[j] != '\0')
-			{
-				c = ch[j] - 32;
-				if(x > 126)
-				{
-					x = 0;
-					y++;
-				}
-				oled_set_Pos(x,y);
-				for(i=0;i<6;i++)
-					oled_i2c_write(fd, OLED_DATA_ADDR,F6x8[c][i]);
-				x += 6;
-				j++;
-			}
-		}break;
-		case 2:
-		{
-			while(ch[j] != '\0')
-			{
-				c = ch[j] - 32;
-				if(x > 120)
-				{
-					x = 0;
-					y++;
-				}  
-				oled_set_Pos(x,y);
-				for(i=0;i<8;i++)
-					oled_i2c_write(fd, OLED_DATA_ADDR,F8X16[c*16+i]);
-				oled_set_Pos(x,y+1);
-				for(i=0;i<8;i++)
-					oled_i2c_write(fd, OLED_DATA_ADDR,F8X16[c*16+i+8]);
-				x += 8;
-				j++;
-			}
-		}break;
+		Result *= X;
+	}
+	return Result;
+}
+
+void OLED_ShowNum(uint8 Line, uint8 Column, unsigned int Number, uint8 Length)
+{
+	uint8 i;
+	for (i = 0; i < Length; i++)							
+	{
+		OLED_ShowChar(Line, Column + i, Number / OLED_Pow(10, Length - i - 1) % 10 + '0');
+	}
+}
+
+/// @brief 
+/// @param Line 
+/// @param Column 
+/// @param Char 
+
+void OLED_ShowChar(uint8 Line, uint8 Column, char Char)
+{      	
+	uint8 i;
+	oled_set_Pos((Line - 1) * 2, (Column - 1) * 8);		//设置光标位置在上半部分
+	for (i = 0; i < 8; i++)
+	{
+		oled_i2c_write(fd,OLED_DATA_ADDR,OLED_F8x16[Char - ' '][i]);			//显示上半部分内容
+	}
+	oled_set_Pos((Line - 1) * 2 + 1, (Column - 1) * 8);	//设置光标位置在下半部分
+	for (i = 0; i < 8; i++)
+	{
+		oled_i2c_write(fd,OLED_DATA_ADDR,OLED_F8x16[Char - ' '][i + 8]);		//显示下半部分内容
 	}
 }
 
 
 
- /**
-  * @brief  OLED_ShowCN，显示codetab.h中的汉字,16*16点阵
-  * @param  x,y: 起始点坐标(x:0~127, y:0~7); 
-	*					N:汉字在codetab.h中的索引
-	* @retval 无
-  */
+
+//  /**
+//   * @brief  OLED_ShowCN，显示codetab.h中的汉字,16*16点阵
+//   * @param  x,y: 起始点坐标(x:0~127, y:0~7); 
+// 	*					N:汉字在codetab.h中的索引
+// 	* @retval 无
+//   */
 // void OLED_ShowCN(unsigned char x, unsigned char y, unsigned char N)
 // {
 // 	unsigned char wm=0;

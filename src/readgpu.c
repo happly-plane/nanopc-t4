@@ -9,7 +9,6 @@
 #include <sys/select.h>
 #include <sys/time.h>
 #include <errno.h>
-
 #include "oled_app.h"
 
 extern int fd;
@@ -74,8 +73,10 @@ while (1)
         OLED_CLS(); //清屏
         sleep(0.5);
 
-        OLED_ShowStr(0, 3, (unsigned char *)usage, 1);  //测试6*8字符
-       // OLED_ShowStr(0, 4, (unsigned char *)"Hello wildfire", 2); //测试8*16字符
+        // OLED_ShowStr(0, 3, (unsigned char *)usage, 1);  //测试6*8字符
+      
+     // OLED_ShowStr(0, 4, (unsigned char *)"Hello wildfire", 2); //测试8*16字符
+        OLED_ShowNum(2,1,(unsigned int)usage,5);
         sleep(0.5);
         OLED_CLS(); //清屏
 }
