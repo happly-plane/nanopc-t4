@@ -25,21 +25,16 @@ static uint8 oled_i2c_write(int fd, uint8 reg, uint8 val)
 {
     int retries;
     uint8 data[2];
-    int write_error = 0;
-
     data[0] = reg;
     data[1] = val;
     
     ioctl(fd, I2C_SLAVE, OLED_ADDRESS);
-
-    for (retries = 5; retries; retries--)
-    {
         if (write(fd, data, 2) == 2)
         {
             return 0;
         }
         usleep(1000);
-    }
+    
     return -1;
 }
 
