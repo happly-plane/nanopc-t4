@@ -21,7 +21,7 @@ int main()
     unsigned long prev_idle, prev_total, idle_delta, total_delta;
     double usage;
 
-    char str[20];
+    char str[5];
 
     OLED_Init(); //初始化oled
     usleep(1000 * 100);
@@ -69,10 +69,10 @@ while (1)
     // printf("CPU usage: %.2f%%\n", usage);
 
         // OLED_ShowStr(0, 3, (unsigned char *)usage, 1);  //测试6*8字符
-        snprintf(str, 20, "%f", usage); // 将浮点数转换为字符串
+        snprintf(str, 5, "%f", usage); // 将浮点数转换为字符串
      // OLED_ShowStr(0, 4, (unsigned char *)"Hello wildfire", 2); //测试8*16字符
         OLED_ShowStr(0, 1, (unsigned char *)str);  //测试6*8字符
-        sleep(0.5);
+        sleep(4);
         OLED_CLS(); //清屏
 }
 
