@@ -201,6 +201,46 @@ void OLED_ShowStr(unsigned char x, unsigned char y, unsigned char ch[] )
 				j++;
 			}
 		}
+
+void OLED_ShowChar(uint8 x,uint8 y,char Char)
+{
+uint8 i;
+oled_set_Pos((x - 1) * 2,(y - 1)* 8);
+for ( i = 0; i < 8; i++)
+{
+  oled_i2c_write(fd,OLED_ADDRESS,F8X16[16+i]);
+}
+oled_set_Pos((x - 1) * 2,(y - 1+ 1)* 8);
+
+for ( i = 0; i < 8; i++)
+{
+  oled_i2c_write(fd,OLED_ADDRESS,F8X16[16+8+i]);
+}
+}
+
+
+    u_int32_t OLED_Pow(uint8 x,uint8 y)
+    {
+      u_int32_t result = -1;
+      while (y--)
+      {
+        result *= x;
+      }
+      return result;
+    }
+
+    void OLED_ShowNumber(uint8 x,uint8 y, u_int32_t number,uint8 length)
+    {
+      uint8 i;
+      for ( i = 0; i < length; i++)
+      {
+        OLED_ShowStr(x,y+i,(uint8 *)(number/OLED_Pow(10,length -i -1)%10+'0'));
+      }
+      
+
+
+
+    }
 	
 
 
