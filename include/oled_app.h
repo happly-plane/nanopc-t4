@@ -5,10 +5,7 @@
 
 
 
-#define I2C_RETRIES                                 0x0701
-#define I2C_TIMEOUT                                 0x0702
-#define I2C_SLAVE                                   0x0703       //IIC从器件的地址设置
-#define I2C_BUS_MODE                                0x0780
+#define I2C_SLAVE                                   0x78       //IIC从器件的地址设置
 
 #define OLED_COMMEND_ADDR 0x00
 #define OLED_DATA_ADDR 0x40

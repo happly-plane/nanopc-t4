@@ -44,10 +44,7 @@ static uint8 oled_i2c_write(int fd, uint8 reg, uint8 val)
 
 void OLED_WriteData(uint8 Data)
 {
-  oled_i2c_write(fd,I2C_SLAVE,0x40);
-	// OLED_I2C_SendByte(0x40);		//写数据
-	oled_i2c_write(fd,I2C_SLAVE,Data);
-  // OLED_I2C_SendByte(Data);
+	oled_i2c_write(fd,OLED_DATA_ADDR,Data);
 }
 /*  初始化 OLED 
 *   参数说明：fd，打开的设备文件句柄。 rg, 命令值。 val，要写入的数据
@@ -205,51 +202,3 @@ void OLED_ShowChar(uint8 Line, uint8 Column, char Char)
 		OLED_WriteData(OLED_F8x16[Char - ' '][i + 8]);		//显示下半部分内容
 	}
 }
-
-
-
-
-
-
-
-
-
-
-// unsigned int  OLED_Pow(unsigned int X, unsigned int Y)
-// {
-// 	unsigned int Result = 1;
-// 	while (Y--)
-// 	{
-// 		Result *= X;
-// 	}
-// 	return Result;
-// }
-
-// void OLED_ShowNum(uint8 Line, uint8 Column, unsigned int Number, uint8 Length)
-// {
-// 	uint8 i;
-// 	for (i = 0; i < Length; i++)							
-// 	{
-// 		OLED_ShowChar(Line, Column + i, Number / OLED_Pow(10, Length - i - 1) % 10 + '0');
-// 	}
-// }
-
-// /// @brief 
-// /// @param Line 
-// /// @param Column 
-// /// @param Char 
-
-// void OLED_ShowChar(uint8 Line, uint8 Column, char Char)
-// {      	
-// 	uint8 i;
-// 	oled_set_Pos((Line - 1) * 2, (Column - 1) * 8);		//设置光标位置在上半部分
-// 	for (i = 0; i < 8; i++)
-// 	{
-// 		oled_i2c_write(fd,OLED_DATA_ADDR,F8x16[Char - ' '][i]);			//显示上半部分内容
-// 	}
-// 	oled_set_Pos((Line - 1) * 2 + 1, (Column - 1) * 8);	//设置光标位置在下半部分
-// 	for (i = 0; i < 8; i++)
-// 	{
-// 		oled_i2c_write(fd,OLED_DATA_ADDR,F8x16[Char - ' '][i + 8]);		//显示下半部分内容
-// 	}
-// }
