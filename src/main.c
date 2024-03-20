@@ -43,7 +43,6 @@ int main(int argc, char *argv[])
         OLED_CLS(); //清屏
         sleep(1);
 
-        OLED_ShowStr(0, 3, (unsigned char *)"Wildfire Tech", 1);  //测试6*8字符
         OLED_ShowStr(0, 4, (unsigned char *)"Hello wildfire", 2); //测试8*16字符
         sleep(1);
         OLED_CLS(); //清屏
