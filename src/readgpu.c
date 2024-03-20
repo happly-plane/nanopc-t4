@@ -67,11 +67,12 @@ while (1)
 
     usage = 100.0 * (1.0 - ((double)idle_delta) / total_delta);
     // printf("CPU usage: %.2f%%\n", usage);
-
+        OLED_CLS();
         // OLED_ShowStr(0, 3, (unsigned char *)usage, 1);  //测试6*8字符
         snprintf(str, 5, "%.2f%%", usage); // 将浮点数转换为字符串
      // OLED_ShowStr(0, 4, (unsigned char *)"Hello wildfire", 2); //测试8*16字符
-        OLED_ShowStr(2, 5, (unsigned char *)str);  //测试6*8字符
+        OLED_ShowStr(2,1,(uint8 *)"CPU Usage");
+        OLED_ShowStr(2, 11, (unsigned char *)str);  //测试6*8字符
         sleep(4);
 }
 
