@@ -174,35 +174,6 @@ void OLED_OFF(void)
 	oled_i2c_write(fd, OLED_COMMEND_ADDR,0X10);  //关闭电荷泵
 	oled_i2c_write(fd, OLED_COMMEND_ADDR,0XAE);  //OLED休眠
 }
- /**
-  * @brief  OLED_ShowStr，显示codetab.h中的ASCII字符,有6*8和8*16可选择
-  * @param  x,y : 起始点坐标(x:0~127, y:0~7);
-	*					ch[] :- 要显示的字符串; 
-	*					TextSize : 字符大小(1:6*8 ; 2:8*16)
-	* @retval 无
-  */
-// void OLED_ShowStr(unsigned char x, unsigned char y, unsigned char ch[] )
-// {
-// 	unsigned char c = 0,i = 0,j = 0;
-
-// 			while(ch[j] != '\0')
-// 			{
-// 				c = ch[j] - 32;
-// 				if(x > 120)
-// 				{
-// 					x = 0;
-// 					y++;
-// 				}  
-// 				oled_set_Pos(x,y);
-// 				for(i=0;i<8;i++)
-// 					oled_i2c_write(fd, OLED_DATA_ADDR,F8X16[c*16+i]);
-// 				oled_set_Pos(x,y+1);
-// 				for(i=0;i<8;i++)
-// 					oled_i2c_write(fd, OLED_DATA_ADDR,F8X16[c*16+i+8]);
-// 				x += 8;
-// 				j++;
-// 			}
-// 		}
 
 void OLED_ShowChar(uint8 x,uint8 y,char Char)
 {
@@ -221,7 +192,7 @@ for ( i = 0; i < 8; i++)
 }
 
 
-    u_int32_t OLED_Pow(uint8 x,uint8 y)
+u_int32_t OLED_Pow(uint8 x,uint8 y)
     {
       u_int32_t result = -1;
       while (y--)
@@ -230,8 +201,7 @@ for ( i = 0; i < 8; i++)
       }
       return result;
     }
-
-    void OLED_ShowNumber(uint8 x,uint8 y, u_int32_t number,uint8 length)
+void OLED_ShowNumber(uint8 x,uint8 y, u_int32_t number,uint8 length)
     {
       uint8 i;
       for ( i = 0; i < length; i++)
