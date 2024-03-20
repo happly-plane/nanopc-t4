@@ -5,7 +5,10 @@
 
 
 
-#define I2C_SLAVE                                   0x78       //IIC从器件的地址设置
+#define I2C_RETRIES                                 0x0701
+#define I2C_TIMEOUT                                 0x0702
+#define I2C_SLAVE                                   0x0703       //IIC从器件的地址设置
+#define I2C_BUS_MODE                                0x0780
 
 #define OLED_COMMEND_ADDR 0x00
 #define OLED_DATA_ADDR 0x40
@@ -23,8 +26,12 @@ void oled_set_Pos(unsigned char x, unsigned char y); //设置起始点坐标
 // unsigned int  OLED_Pow(unsigned int X, unsigned int Y);
 // void OLED_ShowNum(uint8 Line, uint8 Column, unsigned int Number, uint8 Length);
 // void OLED_ShowChar(uint8 Line, uint8 Column, char Char);
+void OLED_ShowChar(uint8 Line, uint8 Column, char Char);
+void OLED_WriteData(uint8 Data);
+void OLED_SetCursor(uint8 Y, uint8 X);
 
-void OLED_ShowStr(unsigned char x, unsigned char y, unsigned char ch[] );
+
+//void OLED_ShowStr(unsigned char x, unsigned char y, unsigned char ch[] );
 
 // void OLED_ShowCN(unsigned char x, unsigned char y, unsigned char N);
 // void OLED_DrawBMP(unsigned char x0,unsigned char y0,unsigned char x1,unsigned char y1,unsigned char BMP[]);
