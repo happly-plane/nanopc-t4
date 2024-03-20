@@ -66,35 +66,35 @@ void OLED_Init(void)
     }
 
 
-    // oled_i2c_write(fd, OLED_COMMEND_ADDR, 0xAE); //display off
-    // oled_i2c_write(fd, OLED_COMMEND_ADDR, 0x20); //Set Memory Addressing Mode
-    // oled_i2c_write(fd, OLED_COMMEND_ADDR, 0x10); //00,Horizontal Addressing Mode;01,Vertical Addressing Mode;10,Page Addressing Mode (RESET);11,Invalid
-    // oled_i2c_write(fd, OLED_COMMEND_ADDR, 0xb0); //Set Page Start Address for Page Addressing Mode,0-7
-    // oled_i2c_write(fd, OLED_COMMEND_ADDR, 0xc8); //Set COM Output Scan Direction
-    // oled_i2c_write(fd, OLED_COMMEND_ADDR, 0x00); //---set low column address
-    // oled_i2c_write(fd, OLED_COMMEND_ADDR, 0x10); //---set high column address
-    // oled_i2c_write(fd, OLED_COMMEND_ADDR, 0x40); //--set start line address
-    // oled_i2c_write(fd, OLED_COMMEND_ADDR, 0x81); //--set contrast control register
-    // oled_i2c_write(fd, OLED_COMMEND_ADDR, 0xf);  //亮度调节 0x00~0xff
-    // oled_i2c_write(fd, OLED_COMMEND_ADDR, 0xa1); //--set segment re-map 0 to 127
-    // oled_i2c_write(fd, OLED_COMMEND_ADDR, 0xa6); //--set normal display
-    // oled_i2c_write(fd, OLED_COMMEND_ADDR, 0xa8); //--set multiplex ratio(1 to 64)
-    // oled_i2c_write(fd, OLED_COMMEND_ADDR, 0x3F); //
-    // oled_i2c_write(fd, OLED_COMMEND_ADDR, 0xa4); //0xa4,Output follows RAM content;0xa5,Output ignores RAM content
+    oled_i2c_write(fd, OLED_COMMEND_ADDR, 0xAE); //display off
+    oled_i2c_write(fd, OLED_COMMEND_ADDR, 0x20); //Set Memory Addressing Mode
+    oled_i2c_write(fd, OLED_COMMEND_ADDR, 0x10); //00,Horizontal Addressing Mode;01,Vertical Addressing Mode;10,Page Addressing Mode (RESET);11,Invalid
+    oled_i2c_write(fd, OLED_COMMEND_ADDR, 0xb0); //Set Page Start Address for Page Addressing Mode,0-7
+    oled_i2c_write(fd, OLED_COMMEND_ADDR, 0xc8); //Set COM Output Scan Direction
+    oled_i2c_write(fd, OLED_COMMEND_ADDR, 0x00); //---set low column address
+    oled_i2c_write(fd, OLED_COMMEND_ADDR, 0x10); //---set high column address
+    oled_i2c_write(fd, OLED_COMMEND_ADDR, 0x40); //--set start line address
+    oled_i2c_write(fd, OLED_COMMEND_ADDR, 0x81); //--set contrast control register
+    oled_i2c_write(fd, OLED_COMMEND_ADDR, 0xf);  //亮度调节 0x00~0xff
+    oled_i2c_write(fd, OLED_COMMEND_ADDR, 0xa1); //--set segment re-map 0 to 127
+    oled_i2c_write(fd, OLED_COMMEND_ADDR, 0xa6); //--set normal display
+    oled_i2c_write(fd, OLED_COMMEND_ADDR, 0xa8); //--set multiplex ratio(1 to 64)
+    oled_i2c_write(fd, OLED_COMMEND_ADDR, 0x3F); //
+    oled_i2c_write(fd, OLED_COMMEND_ADDR, 0xa4); //0xa4,Output follows RAM content;0xa5,Output ignores RAM content
     
-    // oled_i2c_write(fd, OLED_COMMEND_ADDR, 0xd3); //-set display offset
-    // oled_i2c_write(fd, OLED_COMMEND_ADDR, 0x00); //-not offset
-    // oled_i2c_write(fd, OLED_COMMEND_ADDR, 0xd5); //--set display clock divide ratio/oscillator frequency
-    // oled_i2c_write(fd, OLED_COMMEND_ADDR, 0xf0); //--set divide ratio
-    // oled_i2c_write(fd, OLED_COMMEND_ADDR, 0xd9); //--set pre-charge period
-    // oled_i2c_write(fd, OLED_COMMEND_ADDR, 0x22); //
-    // oled_i2c_write(fd, OLED_COMMEND_ADDR, 0xda); //--set com pins hardware configuration
-    // oled_i2c_write(fd, OLED_COMMEND_ADDR, 0x12);
-    // oled_i2c_write(fd, OLED_COMMEND_ADDR, 0xdb); //--set vcomh
-    // oled_i2c_write(fd, OLED_COMMEND_ADDR, 0x20); //0x20,0.77xVcc
-    // oled_i2c_write(fd, OLED_COMMEND_ADDR, 0x8d); //--set DC-DC enable
-    // oled_i2c_write(fd, OLED_COMMEND_ADDR, 0x14); //
-    // oled_i2c_write(fd, OLED_COMMEND_ADDR, 0xaf); //--turn on oled panel
+    oled_i2c_write(fd, OLED_COMMEND_ADDR, 0xd3); //-set display offset
+    oled_i2c_write(fd, OLED_COMMEND_ADDR, 0x00); //-not offset
+    oled_i2c_write(fd, OLED_COMMEND_ADDR, 0xd5); //--set display clock divide ratio/oscillator frequency
+    oled_i2c_write(fd, OLED_COMMEND_ADDR, 0xf0); //--set divide ratio
+    oled_i2c_write(fd, OLED_COMMEND_ADDR, 0xd9); //--set pre-charge period
+    oled_i2c_write(fd, OLED_COMMEND_ADDR, 0x22); //
+    oled_i2c_write(fd, OLED_COMMEND_ADDR, 0xda); //--set com pins hardware configuration
+    oled_i2c_write(fd, OLED_COMMEND_ADDR, 0x12);
+    oled_i2c_write(fd, OLED_COMMEND_ADDR, 0xdb); //--set vcomh
+    oled_i2c_write(fd, OLED_COMMEND_ADDR, 0x20); //0x20,0.77xVcc
+    oled_i2c_write(fd, OLED_COMMEND_ADDR, 0x8d); //--set DC-DC enable
+    oled_i2c_write(fd, OLED_COMMEND_ADDR, 0x14); //
+    oled_i2c_write(fd, OLED_COMMEND_ADDR, 0xaf); //--turn on oled panel
 }
 
 

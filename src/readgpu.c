@@ -24,6 +24,7 @@ int main()
     char str[5];
 
     OLED_Init(); //初始化oled
+    OLED_Fill(0xff);
     usleep(1000 * 100);
 while (1)
 {
