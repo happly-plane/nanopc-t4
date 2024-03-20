@@ -75,7 +75,7 @@ void OLED_Init(void)
     oled_i2c_write(fd, OLED_COMMEND_ADDR, 0x10); //---set high column address
     oled_i2c_write(fd, OLED_COMMEND_ADDR, 0x40); //--set start line address
     oled_i2c_write(fd, OLED_COMMEND_ADDR, 0x81); //--set contrast control register
-    oled_i2c_write(fd, OLED_COMMEND_ADDR, 0xf);  //亮度调节 0x00~0xff
+    oled_i2c_write(fd, OLED_COMMEND_ADDR, 0xff);  //亮度调节 0x00~0xff
     oled_i2c_write(fd, OLED_COMMEND_ADDR, 0xa1); //--set segment re-map 0 to 127
     oled_i2c_write(fd, OLED_COMMEND_ADDR, 0xa6); //--set normal display
     oled_i2c_write(fd, OLED_COMMEND_ADDR, 0xa8); //--set multiplex ratio(1 to 64)
@@ -84,8 +84,10 @@ void OLED_Init(void)
     
     oled_i2c_write(fd, OLED_COMMEND_ADDR, 0xd3); //-set display offset
     oled_i2c_write(fd, OLED_COMMEND_ADDR, 0x00); //-not offset
+
     oled_i2c_write(fd, OLED_COMMEND_ADDR, 0xd5); //--set display clock divide ratio/oscillator frequency
     oled_i2c_write(fd, OLED_COMMEND_ADDR, 0xf0); //--set divide ratio
+
     oled_i2c_write(fd, OLED_COMMEND_ADDR, 0xd9); //--set pre-charge period
     oled_i2c_write(fd, OLED_COMMEND_ADDR, 0x22); //
     oled_i2c_write(fd, OLED_COMMEND_ADDR, 0xda); //--set com pins hardware configuration
@@ -208,13 +210,13 @@ uint8 i;
 oled_set_Pos(x,y);
 for ( i = 0; i < 8; i++)
 {
-  oled_i2c_write(fd,OLED_ADDRESS,F8x16[Char - ' '][i]);
+  oled_i2c_write(fd,OLED_DATA_ADDR,F8x16[Char - ' '][i]);
 }
 oled_set_Pos(x ,y +1);
 
 for ( i = 0; i < 8; i++)
 {
-  oled_i2c_write(fd,OLED_ADDRESS,F8x16[Char - ' '][i + 8]);
+  oled_i2c_write(fd,OLED_DATA_ADDR,F8x16[Char - ' '][i + 8]);
 }
 }
 
