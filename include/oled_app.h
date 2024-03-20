@@ -29,6 +29,9 @@ void oled_set_Pos(unsigned char x, unsigned char y); //设置起始点坐标
 void OLED_ShowChar(uint8 Line, uint8 Column, char Char);
 void OLED_WriteData(uint8 Data);
 void OLED_SetCursor(uint8 Y, uint8 X);
+u_int32_t OLED_Pow(uint8 x,uint8 y);
+void OLED_ShowNumber(uint8 x,uint8 y, u_int32_t number,uint8 length);
+
 
 
 //void OLED_ShowStr(unsigned char x, unsigned char y, unsigned char ch[] );
